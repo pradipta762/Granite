@@ -14,6 +14,8 @@ gem "jsbundling-rails"
 
 gem "jbuilder"
 
+gem "responders"
+
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "bootsnap", require: false
