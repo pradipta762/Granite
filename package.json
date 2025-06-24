@@ -43,9 +43,8 @@
     "prettier-plugin-tailwindcss": "^0.1.8"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "dev": "vite",
-    "prepare": "husky install"
+    "build": "node esbuild.config.js",
+    "dev": "vite"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",

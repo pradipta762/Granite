@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "/";
 
-export const setAuthHeader = () => {
+export const setAuthHeaders = () => {
   axios.defaults.headers = {
     Accept: "application/json",
     "Content-Type": "application/json",

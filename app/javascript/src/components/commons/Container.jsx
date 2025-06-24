@@ -5,12 +5,11 @@ import NavBar from "components/NavBar";
 import PropTypes from "prop-types";
 
 const Container = ({ children, className = "" }) => (
-  <>
-    <NavBar />
+  <NavBar>
     <div className={classnames("mx-auto max-w-6xl px-6", [className])}>
       {children}
     </div>
-  </>
+  </NavBar>
 );
 
 Container.propTypes = {
