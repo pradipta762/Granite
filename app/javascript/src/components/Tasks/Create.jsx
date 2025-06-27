@@ -3,15 +3,12 @@ import React, { useState } from "react";
 import tasksApi from "apis/tasks";
 import { Container, PageTitle } from "components/commons";
 import Logger from "js-logger";
-import { useHistory } from "react-router-dom";
 
 import Form from "./Form";
 
-const CreateTask = () => {
+const CreateTask = ({ history }) => {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const history = useHistory();
 
   const handleSubmit = async event => {
     event.preventDefault();
