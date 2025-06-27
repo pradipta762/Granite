@@ -17,7 +17,7 @@ class Task < ApplicationRecord
       latest_task_slug = Task.where(
         regex_pattern,
         "^#{title_slug}$|^#{title_slug}-[0-9]+$"
-      ).order("LENGTH slug DESC", slug: :desc).first&.slug
+      ).order("LENGTH(slug) DESC", slug: :desc).first&.slug
       slug_count = 0
       if latest_task_slug.present?
         slug_count = latest_task_slug.split("-").last.to_i

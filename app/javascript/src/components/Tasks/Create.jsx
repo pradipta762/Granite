@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import tasksApi from "apis/tasks";
 import { Container, PageTitle } from "components/commons";
 import Logger from "js-logger";
+import { useHistory } from "react-router-dom";
 
 import Form from "./Form";
 
-const Create = () => {
+const CreateTask = () => {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -16,7 +19,7 @@ const Create = () => {
     try {
       await tasksApi.create({ title });
       setLoading(false);
-      history.pushState("/dashboard");
+      history.push("/dashboard");
     } catch (error) {
       Logger.error(error);
       setLoading(false);
@@ -27,10 +30,10 @@ const Create = () => {
     <Container>
       <div className="flex flex-col gap-y-8">
         <PageTitle title="Add new task" />
-        <Form {...{ handleSubmit, loading, setTitle }} />
+        <Form {...{ handleSubmit, loading, setTitle, title }} />
       </div>
     </Container>
   );
 };
 
-export default Create;
+export default CreateTask;

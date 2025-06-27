@@ -8,7 +8,7 @@ const Form = ({ type = "create", title, setTitle, loading, handleSubmit }) => (
       label="Title"
       placeholder="Todo Title (Max 50 Characters Allowed)"
       value={title}
-      onChange={({ target: { value } }) => setTitle(value.slice(0, 50))}
+      onChange={({ target }) => setTitle(target.value.slice(0, 50))}
     />
     <Button
       buttonText={type === "create" ? "Create Task" : "Update Task"}
