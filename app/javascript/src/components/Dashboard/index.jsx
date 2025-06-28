@@ -5,10 +5,13 @@ import { PageLoader, PageTitle, Container } from "components/commons";
 import Table from "components/Tasks/Table";
 import Logger from "js-logger";
 import { isNil, isEmpty, either } from "ramda";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const history = useHistory();
   const fetchTasks = async () => {
     try {
       const {
@@ -20,6 +23,10 @@ const Dashboard = () => {
       Logger.error(error);
       setLoading(false);
     }
+  };
+
+  const showTask = slug => {
+    history.push(`/tasks/${slug}/show`);
   };
 
   useEffect(() => {
@@ -48,7 +55,7 @@ const Dashboard = () => {
     <Container>
       <div className="flex flex-col gap-y-8">
         <PageTitle title="Todo list" />
-        <Table data={tasks} />
+        <Table data={tasks} {...{ showTask }} />
       </div>
     </Container>
   );
