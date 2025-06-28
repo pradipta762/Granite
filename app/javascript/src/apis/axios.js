@@ -30,6 +30,8 @@ const handleSuccessResponse = response => {
       Toastr.success(response.data.notice);
     }
   }
+
+  return response;
 };
 
 const handleErrorResponse = axiosErrorObject => {

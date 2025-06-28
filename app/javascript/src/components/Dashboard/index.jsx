@@ -14,7 +14,6 @@ const Dashboard = () => {
       const {
         data: { tasks },
       } = await tasksApi.fetch();
-      Logger.info(tasks);
       setTasks(tasks);
       setLoading(false);
     } catch (error) {
