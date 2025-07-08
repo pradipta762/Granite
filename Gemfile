@@ -22,6 +22,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "bootsnap", require: false
 
+gem "bcrypt", "~> 3.1.13"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 
