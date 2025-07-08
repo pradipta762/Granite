@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   MAX_NAME_LENGTH = 35
   MIN_PASSWORD_LENGTH = 6
-  VALID_EMAIL_REGEX = /\A([\W+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
+  VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
   MAX_EMAIL_LENGTH = 255
 
   has_many :assigned_task, foreign_key: :assigned_user_id, class_name: "Task"
