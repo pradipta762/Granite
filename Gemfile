@@ -16,6 +16,8 @@ gem "jsbundling-rails"
 
 gem "jbuilder"
 
+gem "pundit"
+
 gem "responders"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
