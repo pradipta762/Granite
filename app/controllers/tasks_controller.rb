@@ -9,7 +9,6 @@ class TasksController < ApplicationController
     tasks = policy_scope(Task)
     tasks_with_assigned_user = tasks.as_json(include: { assigned_user: { only: %i[name id] } })
     render_json({ tasks: tasks_with_assigned_user })
-    render_json({ tasks: })
   end
 
   def create
@@ -21,6 +20,7 @@ class TasksController < ApplicationController
 
   def show
     authorize @task
+    @comments = @task.comments.order("created_at DESC")
   end
 
   def update
