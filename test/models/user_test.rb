@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
   def test_user_should_not_be_valid_and_saved_without_name
     @user.name = ""
     assert_not @user.valid?
-    assert_includes @user.errors.full_message, "Name can't be blank"
+    assert_includes @user.errors.full_messages, "Name can't be blank"
   end
 
   def test_name_should_be_of_valid_length
@@ -90,5 +90,23 @@ class UserTest < ActiveSupport::TestCase
     second_user = create(:user)
 
     assert_not_same @user.authentication_token, second_user.authentication_token
+  end
+
+  def test_tasks_created_by_user_are_deleted_when_user_is_deleted
+    task_owner = build(:user)
+    create(:task, assigned_user: @user, task_owner:)
+
+    assert_difference "Task.count", -1 do
+      task_owner.destroy
+    end
+  end
+
+  def test_tasks_are_assigned_back_to_task_owners_before_assigned_user_is_destroyed
+    task_owner = build(:user)
+    task = create(:task, assigned_user: @user, task_owner:)
+
+    assert_equal @user.id, task.assigned_user_id
+    @user.destroy
+    assert_equal task_owner.id, task.reload.assigned_user_id
   end
 end
