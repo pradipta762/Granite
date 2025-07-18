@@ -46,8 +46,9 @@ jobs:
       - run: cp config/database.yml.ci config/database.yml
       - run: bundle exec rails db:create db:schema:load --trace
       # Generate assets
-      - run: chmod a+x ./bin/webpacker && ./bin/webpacker
-      - run: bundle exec rails webpacker:compile
+      # - run: chmod a+x ./bin/webpacker && ./bin/webpacker
+      # - run: bundle exec rails webpacker:compile
+      - run: yarn build
       # Unit tests
       - run:
           shell: /bin/bash
