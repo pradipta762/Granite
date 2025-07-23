@@ -4,6 +4,9 @@ require_relative "boot"
 
 require "rails/all"
 
+# Load dotenv file
+Dotenv::Railtie.load
+
 Bundler.require(*Rails.groups)
 
 module Granite

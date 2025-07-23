@@ -38,6 +38,15 @@ gem "sidekiq-cron"
 # For opening mails in development env
 gem "letter_opener", group: :development
 
+# PDF generation gem
+gem "wicked_pdf"
+
+# wicked_pdf uses the following binary
+gem "wkhtmltopdf-binary"
+
+# Required by Active Storage to use the GCS
+gem "google-cloud-storage"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 
@@ -70,3 +79,6 @@ end
 gem "react-rails", "~> 2.7.1"
 
 gem "pry-byebug"
+
+# To load the environment variables
+gem "dotenv-rails"
