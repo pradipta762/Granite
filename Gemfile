@@ -30,7 +30,9 @@ gem "bcrypt", "~> 3.1.13"
 
 gem "simplecov", require: false, group: :test
 
-gem "sidekiq", "<7"
+gem "redis"
+
+gem "sidekiq"
 
 # For periodic sidekiq jobs
 gem "sidekiq-cron"

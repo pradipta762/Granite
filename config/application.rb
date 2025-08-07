@@ -4,10 +4,10 @@ require_relative "boot"
 
 require "rails/all"
 
+Bundler.require(*Rails.groups)
+
 # Load dotenv file
 Dotenv::Railtie.load
-
-Bundler.require(*Rails.groups)
 
 module Granite
   class Application < Rails::Application
